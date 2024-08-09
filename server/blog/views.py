@@ -11,8 +11,32 @@ from .serializers import  TagSerializer, SimplePostSerializer, PostSerializer, C
 # Create your views here.
 
 class PostIndexView(APIView):
-    queryset = Post.objects.all()
-    serializer_class = PostSerializer
+    def get(self, request, *args, **kwargs):
+            time_range = request.GET.get('time_range', 'short')
+
+            if time_range == 'long':
+                posts = self.getPostsLong()
+            elif time_range == 'medium':
+                posts = self.getPostsMedium()
+            else:
+                posts = self.getPostsShort()
+
+            serializer = SimplePostSerializer(posts, many=True)
+            return Response(serializer.data)
+
+    def getPostsShort(self):
+        """ Posts created within the last 4 weeks. """
+        four_weeks_ago = now() - timedelta(weeks=4)
+        return Post.objects.filter(created__gte=four_weeks_ago)
+
+    def getPostsMedium(self):
+        """  Posts created within the last 6 months. """
+        six_months_ago = now() - timedelta(days=6*30)
+        return Post.objects.filter(created__gte=six_months_ago)
+
+    def getPostsLong(self):
+        """ Get all posts (all time). """
+        return Post.objects.all()
 
 
 class PostDetailView(generics.RetrieveAPIView):
