@@ -48,3 +48,13 @@ export const createComment = (postId, author, body) => {
     body: body,
   });
 };
+
+/**
+ * Get a List of All Prints
+ */
+export const getPrints = () => axios.get('/store/prints/');
+
+/**
+ * Get a Print
+ */
+export const getPrint = slug => axios.get(`/store/${slug}/`);
