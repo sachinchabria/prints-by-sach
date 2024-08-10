@@ -34,6 +34,8 @@ class Variant(models.Model):
     width = models.DecimalField(max_digits=3, decimal_places=1)
     length = models.DecimalField(max_digits=3, decimal_places=1)
     price = models.DecimalField(max_digits=5, decimal_places=2)
+    stripe_product_id = models.CharField(max_length=255, blank=True, null=True)
+    stripe_price_id = models.CharField(max_length=255, blank=True, null=True)
 
     def __str__(self):
         return f'{self.print.name} - {self.get_size_display()}'
