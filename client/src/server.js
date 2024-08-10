@@ -57,7 +57,7 @@ export const getPrints = () => axios.get('/store/prints/');
 /**
  * Get a Print
  */
-export const getPrint = slug => axios.get(`/store/${slug}/`);
+export const getPrint = slug => axios.get(`/store/prints/${slug}/`);
 
 /**
  * Get Cart
