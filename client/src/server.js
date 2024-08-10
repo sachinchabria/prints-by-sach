@@ -58,3 +58,20 @@ export const getPrints = () => axios.get('/store/prints/');
  * Get a Print
  */
 export const getPrint = slug => axios.get(`/store/${slug}/`);
+
+/**
+ * Get Cart
+ */
+export const getCart = () => axios.get('/store/cart/', { withCredentials: true });
+
+/**
+ * Add Item to Cart
+ */
+export const addToCart = (variant_id) => 
+  axios.post(`/store/cart/add/${variant_id}/`, null, { withCredentials: true });
+
+/**
+ * Remove Item from Cart
+ */
+export const removeFromCart = (variant_id) => 
+  axios.get(`/store/cart/remove/${variant_id}/`, { withCredentials: true });
