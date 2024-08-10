@@ -41,4 +41,4 @@ class Variant(models.Model):
     class Meta:
         verbose_name = "Variant"
         verbose_name_plural = "Variants"
-        ordering = ['print', 'size']
+        ordering = ['print', 'width']
