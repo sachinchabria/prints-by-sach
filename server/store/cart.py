@@ -16,6 +16,7 @@ class Cart:
         variant_id = str(variant.id)
         if variant_id not in self.cart:
             self.cart[variant_id] = {
+                'variant_id': variant.id,
                 'name': variant.print.name,
                 'image': variant.print.image,
                 'width': str(variant.width),

@@ -7,4 +7,5 @@ urlpatterns = [
     path('cart/', views.CartView.as_view(), name='cart'),
     path('cart/add/<int:variant_id>/', views.add_to_cart,  name='cart-add'),
     path('cart/remove/<int:variant_id>/', views.remove_from_cart, name='cart-remove'),
+    path('create-checkout-session/', views.CreateCheckoutSessionView.as_view()),
 ]
