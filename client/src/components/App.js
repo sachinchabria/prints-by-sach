@@ -10,7 +10,16 @@ import Print from './Print';
 import Prints from './Prints';
 import Cart from './Cart';
 
-import { GlobalStyle } from '../styles';
+import styled from 'styled-components';
+import { GlobalStyle, theme, media } from '../styles';
+
+const SiteWrapper = styled.div`
+  padding-left: ${theme.navWidth};
+  ${media.tablet`
+    padding-left: 0;
+    padding-bottom: 50px;
+  `};
+`;
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -25,19 +34,21 @@ const ScrollToTop = () => {
 function App() {
   return (
     <Router>
-      <GlobalStyle />
-      <ScrollToTop />
-      <Nav />
-      <Routes>
-        <Route path="/" element={<Navigate to="/blog" replace />} />
-        <Route path="/blog" element={ <Posts/> }/>
-        <Route path="/blog/:slug" element={ <Post/> }/>
-        <Route path="/tags" element={ <Tags/> }/>
-        <Route path="/tags/:slug" element={ <Tag/> }/>
-        <Route path="/store" element={ <Prints/> }/>
-        <Route path="/store/:slug" element={ <Print/> }/>
-        <Route path="/cart" element={ <Cart/> }/>
-      </Routes>
+      <SiteWrapper>
+        <GlobalStyle />
+        <ScrollToTop />
+        <Nav />
+        <Routes>
+          <Route path="/" element={<Navigate to="/blog" replace />} />
+          <Route path="/blog" element={ <Posts/> }/>
+          <Route path="/blog/:slug" element={ <Post/> }/>
+          <Route path="/tags" element={ <Tags/> }/>
+          <Route path="/tags/:slug" element={ <Tag/> }/>
+          <Route path="/store" element={ <Prints/> }/>
+          <Route path="/store/:slug" element={ <Print/> }/>
+          <Route path="/cart" element={ <Cart/> }/>
+        </Routes>
+      </SiteWrapper>
     </Router>
   );
 }
