@@ -53,7 +53,7 @@ class CreateCheckoutSessionView(APIView):
     @csrf_exempt
     def get(self, request):
         stripe.api_key = settings.STRIPE_SECRET_KEY
-        YOUR_DOMAIN = 'http://localhost:8000/'
+        YOUR_DOMAIN = 'http://localhost:3000/'
         cart = Cart(request)
         line_items = []
         for cart_item in cart:
@@ -68,7 +68,7 @@ class CreateCheckoutSessionView(APIView):
             line_items=line_items,
             mode='payment',
             success_url=YOUR_DOMAIN + '?success',
-            cancel_url=YOUR_DOMAIN + '?cancel',
+            cancel_url=YOUR_DOMAIN + 'cart',
             automatic_tax={'enabled': True},
             shipping_address_collection={
                 'allowed_countries': ['US', 'PA'],
