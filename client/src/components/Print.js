@@ -116,7 +116,7 @@ const Print = () => {
       const { data } = await addToCart(selectedVariant.id);
       setConfirmationMessage(data.message);
     };
-    catchErrors(addItem ());
+    catchErrors(addItem());
   };
 
   return (
