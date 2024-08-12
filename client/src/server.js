@@ -75,3 +75,17 @@ export const addToCart = (variant_id) =>
  */
 export const removeFromCart = (variant_id) => 
   axios.get(`/store/cart/remove/${variant_id}/`, { withCredentials: true });
+
+/**
+ * Update Item in Cart
+ */
+export const updateQuantity = async (variantId, quantity) => {
+  await axios.get(`/store/cart/remove/${variantId}/`, { withCredentials: true });
+  await axios.post(`/store/cart/add/${variantId}/?quantity=${quantity}`, null, { withCredentials: true });
+};
+
+/**
+ * Create Checkout Session
+ */
+export const createCheckout = () => 
+  axios.get('/store/create-checkout-session/', { withCredentials: true });
