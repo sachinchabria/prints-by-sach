@@ -7,6 +7,7 @@ import Tag from './Tag';
 import Tags from './Tags';
 import Print from './Print';
 import Prints from './Prints';
+import Cart from './Cart';
 
 import { GlobalStyle } from '../styles';
 
@@ -33,6 +34,7 @@ function App() {
         <Route path="/tags/:slug" element={ <Tag/> }/>
         <Route path="/store" element={ <Prints/> }/>
         <Route path="/store/:slug" element={ <Print/> }/>
+        <Route path="/cart" element={ <Cart/> }/>
       </Routes>
     </Router>
   );
