@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 
+import Nav from './Nav';
 import Post from './Post';
 import Posts from './Posts';
 import Tag from './Tag';
@@ -26,6 +27,7 @@ function App() {
     <Router>
       <GlobalStyle />
       <ScrollToTop />
+      <Nav />
       <Routes>
         <Route path="/" element={<Navigate to="/blog" replace />} />
         <Route path="/blog" element={ <Posts/> }/>
