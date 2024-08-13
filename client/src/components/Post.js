@@ -17,9 +17,14 @@ const PostContainer = styled.div`
 const PostTitle = styled.h3`
   font-weight: 700;
   font-size: ${fontSizes.xxl};
+  ${media.tablet`
+    font-size: ${fontSizes.xl};
+    margin: 0 0 8px;
+  `};
 `;
 const PostMetadata = styled.p`
   color: ${colors.lightGrey};
+  margin: 0 0 4px;
   a {
     color: ${colors.blue};
     border-bottom: 1px solid transparent;
@@ -32,9 +37,12 @@ const PostMetadata = styled.p`
 `;
 const PostThumbnail = styled.div`
   ${mixins.coverShadow};
-  width: 100%;
+ 
   height: auto;
   margin: ${spacing.md} auto;
+  ${media.tablet`
+    margin: ${spacing.base} auto;
+  `};
 `;
 const PostCaption = styled.p`
   font-size: ${fontSizes.md};
@@ -49,28 +57,19 @@ const CommentSection = styled.div`
 const CommentForm = styled.form`
   display: flex;
   flex-direction: column;
-  gap: ${spacing.sm};
-  border-radius: 4px;
 `;
 const InputField = styled.input`
-  color: ${colors.black};
-  font-size: ${fontSizes.sm};
-  padding: ${spacing.sm} ${spacing.xxs};
-
-  width: 100%;
-  max-width: 100%;
-  min-width: 100%;
+  max-width: 400px;
+  margin-bottom: ${spacing.sm};
 `;
-const TextField = styled.input`
-  color: ${colors.black};
-  font-size: ${fontSizes.sm};
-  padding: ${spacing.sm} ${spacing.xxs};
+const TextField = styled.textarea`
   width: 100%;
-  max-width: 100%;
-  min-width: 100%;
+  margin-bottom: ${spacing.base};
 `;
 const SubmitButton = styled.button`
   ${mixins.button};
+  opacity: ${(props) => (props.disabled ? 0.5 : 1)};
+  cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
 `;
 const Comment = styled.div`
   padding: ${spacing.sm} 0;
@@ -109,7 +108,21 @@ const Post = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     catchErrors(createComment(post.id, comment.author, comment.body));
+    setPost((prevPost) => ({
+      ...prevPost,
+      comments: [...prevPost.comments, { 
+        author: comment.author, 
+        body: comment.body, 
+        created: new Date().toISOString()
+      }]
+    }));
+    setComment({
+      author: '',
+      body: ''
+    });
   };
+
+  const isSubmitDisabled = !comment.author.trim() || !comment.body.trim();
 
   return (
     <React.Fragment>
@@ -136,21 +149,26 @@ const Post = () => {
             <PostCaption dangerouslySetInnerHTML={{ __html: post.caption }} />
 
             <CommentSection>
-              <h3>Comments:</h3>
+              <h3>Comments</h3>
               <CommentForm onSubmit={handleSubmit}>
+                <label>Your name</label>
                 <InputField 
                   name="author"
                   value={comment.author} 
-                  placeholder="Name" 
+                  placeholder="or alias to remain anonymous..." 
                   onChange={handleChange}
                 />
+                <label>Comment</label>
                 <TextField 
-                  name="text"
-                  value={comment.body} 
-                  placeholder="Add a comment..." 
+                  name="body"
+                  rows="2"
+                  value={comment.body}
+                  placeholder="your photos suck stick to tennis..." 
                   onChange={handleChange}
                 />
-                <SubmitButton type="submit">Comment</SubmitButton>
+                <SubmitButton type="submit" disabled={isSubmitDisabled}>
+                  Comment
+                </SubmitButton>
               </CommentForm>
               {post.comments.map((comment, i) => (
                 <Comment key={i}>
