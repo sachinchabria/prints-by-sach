@@ -4,7 +4,7 @@ import axios from 'axios';
  * Axios global request headers
  * https://github.com/axios/axios#global-axios-defaults
  */
-axios.defaults.baseURL = 'http://localhost:8000';
+axios.defaults.baseURL = 'https://prints-by-sach-79aa2116d918.herokuapp.com';
 axios.defaults.headers['Content-Type'] = 'application/json';
 axios.defaults.withCredentials = true;
 axios.defaults.xsrfCookieName = 'csrftoken'
