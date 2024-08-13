@@ -28,6 +28,7 @@ const TagsContainer = styled.div`
 const Tag = styled.div`
   display: flex;
   flex-direction: column;
+  text-align: center;
 `;
 const TagMask = styled.div`
   ${mixins.flexCenter};
@@ -45,7 +46,6 @@ const TagMask = styled.div`
   transition: ${theme.transition};
 `;
 const TagImage = styled.img`
-  height: 300px;
   object-fit: cover;
 `;
 const TagCover = styled(Link)`
