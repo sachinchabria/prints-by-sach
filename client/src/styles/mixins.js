@@ -46,8 +46,7 @@ const mixins = {
     color: ${colors.white};
     font-weight: 700;
     font-size: ${fontSizes.sm};
-    text-transform: uppercase;
-    border-radius: 50px;
+    border-radius: 4px;
     padding: 11px 24px;
     cursor: pointer;
     transition: ${theme.transition};
