@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 import theme from './theme';
-const { colors, fontSizes, fonts } = theme;
+const { colors, fontSizes, fonts, spacing } = theme;
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
@@ -146,20 +146,32 @@ const GlobalStyle = createGlobalStyle`
     vertical-align: middle;
   }
 
-  input {
-    border: none;
-    border-bottom: 2px solid ${colors.lightestGrey};
+  input, textarea {
+    color: ${colors.black};
+    padding: ${spacing.xxs} ${spacing.sm};
+    border: 1px solid ${colors.lightestGrey};
+    border-radius: 4px; 
+    transition: all 0.3s ease; 
+    font-size: 16px;
     outline: none;
     &::placeholder {
-      opacity: 0.7;
+      color: ${colors.lightGrey};
+      transition: opacity 0.3s ease;
+    }
+    &:hover {
+      border: 1px solid ${colors.lightGrey};
     }
     &:focus,
     &:active {
-      border-bottom: 2px solid ${colors.black};
-      &::placeholder {
-        opacity: 0;
-      }
+      border: 1px solid ${colors.lightGrey};
+      box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2);
     }
+  }
+
+  label {
+    font-weight: 700;
+    font-size: 14;
+    margin-bottom: ${spacing.xs};
   }
 
   button {
@@ -168,11 +180,12 @@ const GlobalStyle = createGlobalStyle`
     font-family: ${fonts.primary};
     font-size: ${fontSizes.base};
     font-weight: 700;
-    border-radius: 50px;
+    border-radius: 4px;
     border: 0;
     padding: 10px 20px;
     cursor: pointer;
     transition: ${theme.transition};
+    width: fit-content;
 
     &:hover,
     &:focus {
