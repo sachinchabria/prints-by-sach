@@ -33,7 +33,7 @@ SECRET_KEY = 'django-insecure-_j4z44$=mm@3w-3_y-x--2zv*6ztk5k-7g%3e&em*lx23he=!d
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['https://printsbysach.com', 'localhost']
+ALLOWED_HOSTS = ['https://prints-by-sach.vercel.app', 'localhost']
 
 
 # Application definition
@@ -53,12 +53,12 @@ INSTALLED_APPS = [
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
-    'https://printsbysach.com',
+    'https://prints-by-sach.vercel.app',
 ]
 CORS_ALLOW_CREDENTIALS = True
 CSRF_TRUSTED_ORIGINS = [
     'http://localhost:3000',
-    'https://printsbysach.com',
+    'https://prints-by-sach.vercel.app',
 ]
 
 MIDDLEWARE = [
