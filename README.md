@@ -1,4 +1,4 @@
-# Prints-by-sach
+# prints-by-sach
 
 This repository contains the codebase for the PrintsBySach project (available at [https://printsbysach.com](https://printsbysach.com)), a Django-based application designed to manage and sell art prints and blog posts. The application includes models for handling prints, their variants, and associated cart functionality, as well as blog posts, tags, and comments. This README provides an overview of the core components, including models, serializers, URL routing, and frontend components.
 
@@ -252,3 +252,42 @@ The `Cart` component manages the display and interaction with the shopping cart.
 
 The `Loader` component displays an animated loading indicator.
 
+### 4. Nav Component
+
+The `Nav` component renders the navigation menu for the application, including links to different sections such as Blog, Tags, Store, and Cart. It also includes a GitHub link.
+
+**Features:**
+- Responsive design that adjusts based on screen size.
+- Icons used for navigation.
+- Fixed position on larger screens and a footer-style layout on smaller screens.
+
+### 5. Post Component
+
+The `Post` component displays the details of a single blog post, including the title, metadata, image, caption, and comments. It also includes a form to add new comments.
+
+**Features:**
+- Renders post content with HTML formatting.
+- Displays associated tags with links.
+- Handles the submission of new comments.
+
+### 6. Posts Component
+
+The `Posts` component renders a list of recent blog posts. Users can filter posts by different time ranges (all time, last 6 months, last 4 weeks).
+
+**Features:**
+- Displays posts with title, metadata, image, and caption.
+- Provides filtering options for different time ranges.
+- Responsive design that adjusts the layout based on screen size.
+
+### 7. Print Component
+
+The `Print` component displays the details of a specific print available in the store, including its image, title, price, and available size variants. Users can select a variant and add it to the cart.
+
+**Features:**
+- Renders a form to select a size variant.
+- Handles the addition of the selected variant to the cart.
+- Displays a confirmation message after adding to the cart.
+
+### 8. Prints Component
+
+The `Prints` component renders a grid of all available prints in the store.
